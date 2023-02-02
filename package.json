@@ -1,0 +1,21 @@
+{
+  "name": "acordo-fechado",
+  "version": "1.0.0",
+  "description": "CRUD para registro de livros, usando Express e Mongoose(ODM para MongoDB)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb"
+  ],
+  "author": "f3rn4nd0000",
+  "license": "GPL-2.0-only",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20"
+  }
+}
