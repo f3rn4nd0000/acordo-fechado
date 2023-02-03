@@ -4,6 +4,6 @@ module.exports = app => {
   
     // Cria um novo livro
     router.post("/", books.create);
-
+    router.get("/", books.findAll);
     app.use('/api/books', router);
 }  
