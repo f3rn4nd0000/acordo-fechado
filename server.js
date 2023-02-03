@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const db = require("./app/models");
-const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors(corsOptions));
@@ -29,6 +28,9 @@ app.get('/', (req, res) => {
   res.json('Hello World!');
 });
 
+require("./app/routes/book.routes")(app);
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`App rodando em http://localhost:${PORT}`);
 });
