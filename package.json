@@ -4,7 +4,8 @@
   "description": "CRUD para registro de livros, usando Express e Mongoose(ODM para MongoDB)",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "node",
@@ -14,8 +15,11 @@
   "author": "f3rn4nd0000",
   "license": "GPL-2.0-only",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "mongoose": "^6.9.0",
+    "mongoose": "^6.9.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
   }
 }
