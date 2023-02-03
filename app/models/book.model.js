@@ -6,12 +6,13 @@ module.exports = mongoose => {
           title: String,
           author: String,
           publisher: String,
-          publicationYear: String,
+          publicationYear: Number,
           numberOfPages: Number,
         },
+        // Adiciona data de criação
         { timestamps: true }
       )
     );
-  
+
     return Book;
   };
