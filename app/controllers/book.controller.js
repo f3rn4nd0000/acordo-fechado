@@ -3,16 +3,18 @@ const Book = db.books;
 
 exports.create = (req, res) => {
 
-  if(!req.body.title) {
-    res.status(400).send({ message: "Título do livro não pode ficar vazio!"});
+  if(!req.body.title || !req.body.author) {
+    res.status(400).send({ message: "Título e autor do livro não podem ficar vazios!"});
     return;
   }
 
   const book = new Book({
     title: req.body.title,
-    description: req.body.description,
-    numberOfPages: req.body.numberOfPages,
-    published: req.body.published ? req.body.published: false
+    author: req.body.author,
+    publisher: req.body.publisher,
+    publicationYear: req.body.publicationYear,
+    numberOfPages: req.body.numberOfPages
+    // published: req.body.published ? req.body.published: false
   });
 
   book
@@ -41,13 +43,25 @@ exports.findAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Ocorreu um erro na tentativa de buscar todos os livros"
+          err.message || "Ocorreu um erro na tentativa de buscar os livros"
       });
     });
 };
 
 exports.findOne = (req, res) => {
-  
+  const id = req.params.id;
+
+  Book.findById(id)
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Não foi encontrado livro com o id: " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Erro ao buscar livro com id:" + id });
+    });
 };
 
 exports.update = (req, res) => {

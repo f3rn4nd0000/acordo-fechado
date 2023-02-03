@@ -4,9 +4,10 @@ module.exports = mongoose => {
       mongoose.Schema(
         {
           title: String,
-          description: String,
+          author: String,
+          publisher: String,
+          publicationYear: String,
           numberOfPages: Number,
-          published: Boolean
         },
         { timestamps: true }
       )
