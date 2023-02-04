@@ -49,3 +49,21 @@ MONGO_PSSWD=<sua_senha_mongodb>
 OU
 * <base_url>/api/books/:book_id
 Onde :book_id é uma string no formato UUID
+
+### Instruções para execução:
+
+É necessário ter o ambiente de execução NodeJS instalado em sua máquina, caso ainda não tenha baixe em: https://nodejs.org/en/download/
+
+Para executar basta fazer um clone do projeto no seu computador:
+
+``` 
+git clone https://github.com/f3rn4nd0000/acordo-fechado.git 
+```
+
+Após isso, entre no diretório do projeto, instale as dependências e execute comando para iniciar o programa:
+
+```
+cd acordo-fechado
+npm install
+npm start
+```
