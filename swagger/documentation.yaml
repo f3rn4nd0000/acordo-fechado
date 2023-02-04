@@ -150,7 +150,7 @@ paths:
       parameters:
       - name: bookId
         in: path
-        description: Id do livro a ser atualizado
+        description: Id do livro a ser buscado
         required: true
         schema:
           type: string
@@ -204,8 +204,8 @@ paths:
                     format: date-time
                   __v:
                     type: number
-        '400':
-          description: Título e autor do livro não podem ficar vazios!
+        '404':
+          description: "Erro ao buscar livro com id: bookId"
     put:
       parameters:
       - name: bookId
@@ -264,13 +264,13 @@ paths:
                     format: date-time
                   __v:
                     type: number
-        '400':
-          description: Título e autor do livro não podem ficar vazios!
+        '404':
+          description: Impossível atualizar livro de id:${id}. Não foi encontrado na base de dados!
     delete:
       parameters:
       - name: bookId
         in: path
-        description: Id do livro a ser atualizado
+        description: Id do livro a ser excluído
         required: true
         schema:
           type: string
@@ -324,5 +324,5 @@ paths:
                     format: date-time
                   __v:
                     type: number
-        '400':
-          description: Título e autor do livro não podem ficar vazios!
+        '404':
+          description: Impossível deletar livro de id:bookId. Não foi encontrado na base de dados!

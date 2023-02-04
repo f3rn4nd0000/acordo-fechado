@@ -67,3 +67,5 @@ cd acordo-fechado
 npm install
 npm start
 ```
+
+Para realização de teste recomenda-se usar o Insomnia ou equivalente (Postman): https://insomnia.rest/download
