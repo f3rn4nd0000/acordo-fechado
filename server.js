@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const db = require("./app/models");
-
 app.use(express.json());
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
@@ -31,6 +30,7 @@ app.get('/', (req, res) => {
 require("./app/routes/book.routes")(app);
 
 const PORT = process.env.PORT || 3000;
+app.use
 app.listen(PORT, () => {
   console.log(`App rodando em http://localhost:${PORT}`);
 });

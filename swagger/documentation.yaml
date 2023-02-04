@@ -1,0 +1,328 @@
+openapi: 3.0.3
+info:
+  title: Cadastro de Livros - Acordo Fechado
+  description: |-
+    Essa é a documentação para a API desenvolvida para o cadastro de livros para o teste técnico da empresa acordo fechado
+
+    Links do projeto:
+    - [Repositório contendo código fonte](https://github.com/f3rn4nd0000/acordo-fechado)
+  contact:
+    email: nando.mot@gmail.com
+  license:
+    name: GPL 2.0
+    url: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /api/books:
+    get:
+      tags:
+          - books
+      summary: Retorna todos os livros cadastrados
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publisher:
+                    type: string
+                  publicationYear:
+                    type: number
+                  numberOfPages:
+                    type: number
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  __v:
+                    type: number
+        '400':
+          description: Título e autor do livro não podem ficar vazios
+        '500':
+          description: Ocorreu um erro na tentativa de buscar os livros
+    post:
+      tags:
+        - books
+      summary: Cadastra um novo livro
+      description: Cadastra um novo livro no banco de dados
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                publisher:
+                  type: string
+                publicationYear:
+                  type: number
+                numberOfPages:
+                  type: number
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publisher:
+                    type: string
+                  publicationYear:
+                    type: number
+                  numberOfPages:
+                    type: number
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  __v:
+                    type: number
+        '400':
+          description: Título e autor do livro não podem ficar vazios!
+    delete:
+      tags:
+          - books
+      summary: Exclui todos os livros cadastrados
+      responses:
+        '200':
+          description: núm de livros Livros excluídos com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publisher:
+                    type: string
+                  publicationYear:
+                    type: number
+                  numberOfPages:
+                    type: number
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  __v:
+                    type: number
+        '400':
+          description: Título e autor do livro não podem ficar vazios
+        '500':
+          description: Ocorreu um erro na tentativa de buscar os livros
+  /api/books/{bookId}:
+    get:
+      parameters:
+      - name: bookId
+        in: path
+        description: Id do livro a ser atualizado
+        required: true
+        schema:
+          type: string
+          format: uuid
+      tags:
+        - books
+      summary: Retorna um livro existente no banco de dados tomando como parâmetro seu Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                publisher:
+                  type: string
+                publicationYear:
+                  type: number
+                numberOfPages:
+                  type: number
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publisher:
+                    type: string
+                  publicationYear:
+                    type: number
+                  numberOfPages:
+                    type: number
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  __v:
+                    type: number
+        '400':
+          description: Título e autor do livro não podem ficar vazios!
+    put:
+      parameters:
+      - name: bookId
+        in: path
+        description: Id do livro a ser atualizado
+        required: true
+        schema:
+          type: string
+          format: uuid
+      tags:
+        - books
+      summary: Atualiza um livro do banco de dados usando como parâmetro seu Id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                publisher:
+                  type: string
+                publicationYear:
+                  type: number
+                numberOfPages:
+                  type: number
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publisher:
+                    type: string
+                  publicationYear:
+                    type: number
+                  numberOfPages:
+                    type: number
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  __v:
+                    type: number
+        '400':
+          description: Título e autor do livro não podem ficar vazios!
+    delete:
+      parameters:
+      - name: bookId
+        in: path
+        description: Id do livro a ser atualizado
+        required: true
+        schema:
+          type: string
+          format: uuid
+      tags:
+        - books
+      summary: Exclui um livro do banco de dados usando como parâmetro seu id
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                author:
+                  type: string
+                publisher:
+                  type: string
+                publicationYear:
+                  type: number
+                numberOfPages:
+                  type: number
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _id:
+                    type: string
+                    format: uuid
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  publisher:
+                    type: string
+                  publicationYear:
+                    type: number
+                  numberOfPages:
+                    type: number
+                  createdAt:
+                    type: string
+                    format: date-time
+                  updatedAt:
+                    type: string
+                    format: date-time
+                  __v:
+                    type: number
+        '400':
+          description: Título e autor do livro não podem ficar vazios!
