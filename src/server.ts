@@ -1,15 +1,20 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
+import db from "./app/models";
+// const db = require("./app/models");
+// from "./app/models" import db
 const app = express();
-const db = require("./app/models");
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
+
 app.use(express.json());
-app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 db.mongoose
   .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
   })
   .then(() => {
     console.log("Conexão com banco de dados efetuada!");
@@ -19,16 +24,7 @@ db.mongoose
     process.exit();
   });
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
-
-app.get('/', (req, res) => {
-  res.json('Hello World!');
-});
-
 require("./app/routes/book.routes")(app);
-
 const PORT = process.env.PORT || 3000;
 app.use
 app.listen(PORT, () => {
